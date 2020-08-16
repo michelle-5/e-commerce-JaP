@@ -50,10 +50,17 @@
       border-color: rgb(190, 19, 93);
     }
 
-    input[type="email"]{
-      border-color: lightgray;
+    input {
+      border: 1px solid rgb(156, 153, 153);
     }
 
+    input:focus {
+      outline-color: rgb(116, 114, 114);
+    }
+
+    input:hover {
+      border-color: rgb(116, 114, 114);
+    }
   </style>
 </head>
 
@@ -63,7 +70,7 @@
     <form class="text-center" id="form">
       <br> 
       <input type="email" name="email" id="email" style="width: 35%; height: 2rem; font-size: 0.9rem;" placeholder="Ingresa tu email" required><br>
-        <div style="display: flex; width: 35%; margin: 0 auto; margin-top: 0.5rem;"><input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" style="height: 2rem; font-size: 0.9rem; width: 330px" required><input type="checkbox" id="check" style="height: 2rem; width: 35px; margin-left: 0.1rem"></div><br>
+        <div style="display: flex; width: 35%; margin: 0 auto; margin-top: 0.5rem;"><input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" style="height: 2rem; font-size: 0.9rem; width: 330px" required><input type="checkbox" id="check" style=" height: 2rem; width: 35px; margin-left: 0.1rem"></div><br>
       <button class="btn btn-success" type="submit" style="width: 35%; height: 2.6rem;">Ingresar</button><br>
       <button class="btn btn-secondary" type="submit" style="width: 35%; height: 2.2rem; padding: 0; margin-top: 0.5rem;">Regístrate</button>
     </form>
