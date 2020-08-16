@@ -40,12 +40,24 @@
       width: 35%;
     }
 
-
-    .btn-success {
-      background-color: rgb(214, 28, 108);;
-      border-color: rgb(214, 28, 108);;
+    .btn-success:active {
+      background-color: rgb(190, 19, 93);
     }
-    .btn-success:hover {
+
+    .btn-pink {
+      border-style: hidden;
+      border-radius: 0.3rem;
+      color: white;
+      background-color: rgb(214, 28, 108);;
+      border-color: rgb(214, 28, 108);
+    }
+
+    .btn-pink:focus {
+      box-shadow:0 0 0 .2rem rgba(130,138,145,.5);
+      outline: none;
+    }
+
+    .btn-pink:hover {
       background-color: rgb(190, 19, 93);
       border-color: rgb(190, 19, 93);
     }
@@ -71,7 +83,7 @@
       <br> 
       <input type="email" name="email" id="email" style="width: 35%; height: 2rem; font-size: 0.9rem;" placeholder="Ingresa tu email" required><br>
         <div style="display: flex; width: 35%; margin: 0 auto; margin-top: 0.5rem;"><input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" style="height: 2rem; font-size: 0.9rem; width: 330px" required><input type="checkbox" id="check" style=" height: 2rem; width: 35px; margin-left: 0.1rem"></div><br>
-      <button class="btn btn-success" type="submit" style="width: 35%; height: 2.6rem;">Ingresar</button><br>
+      <button class="btn-pink" type="submit" style="width: 35%; height: 2.6rem;">Ingresar</button><br>
       <button class="btn btn-secondary" type="submit" style="width: 35%; height: 2.2rem; padding: 0; margin-top: 0.5rem;">Regístrate</button>
     </form>
   </div>
