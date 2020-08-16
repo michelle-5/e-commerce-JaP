@@ -11,6 +11,12 @@
         contraseña: password.value
     });
 
+    let local = localStorage.getItem('usuario');
+    let session = sessionStorage.getItem('usuario');
+    if (local !== null || session !== null){
+    location.replace("index.html");
+    }
+
     form.addEventListener('submit',function(event){
         event.preventDefault()
     
@@ -21,13 +27,7 @@
             sessionStorage.setItem('usuario',JSON.stringify(usuarios));
             location.href="index.html";
         }
-        
 });     
-    let local = localStorage.getItem('usuario',JSON.stringify(usuarios));
-    let session = sessionStorage.getItem('usuario',JSON.stringify(usuarios));
-    if (local !== null || session !== null){
-        location.replace("index.html");
-    }
 
 document.addEventListener("DOMContentLoaded", function(e){
 });
