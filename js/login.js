@@ -23,10 +23,5 @@ form.addEventListener('submit',function(event){
     }
 });     
 
-if onSignIn(googleUser){
-    localStorage.setItem("guser", googleUser.getBasicProfile());
-    location.href="index.html";
-}
-
 document.addEventListener("DOMContentLoaded", function(e){
 });
