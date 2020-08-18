@@ -76,6 +76,10 @@
     input:hover {
       border-color: rgb(116, 114, 114);
     }
+
+    .data {
+      display: none;
+    }
   </style>
 </head>
 
@@ -89,6 +93,11 @@
       <button class="btn-pink" type="submit" style="width: 35%; height: 2.6rem;">Ingresar</button><br>
       <button class="btn btn-secondary" type="submit" style="width: 35%; height: 2.2rem; padding: 0; margin-top: 0.5rem;">Regístrate</button>
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      <div class="data">
+        <img id="pic" class="img-circle" width="50" height="50">
+        <p id="email" class="alert alert-danger"></p>
+        <button onclick="signOut()" class="btn btn-danger">Sign out</button>
+      </div>
     </form>
   </div>
 
