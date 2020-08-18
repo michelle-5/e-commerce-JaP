@@ -61,6 +61,14 @@ if (sessionStorage.getItem('usuario') != null && getFileName() == "login.html") 
   location.replace('index.html');
 }
 
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  $("g-signin2").css("display", "none");
+  $("data").css("display", "block");
+  $("#pic").attr('src', profile.getImageUrl());
+  $("email").text(profile.getEmail());
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
