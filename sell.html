@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <title>eMercado - Todo lo que busques está aquí</title>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -22,6 +18,10 @@
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
+        }
+
+        #cerrarSesion:hover, #showEmail:hover {
+          text-decoration: underline;
         }
       }
     </style>
@@ -37,16 +37,36 @@
             <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
             <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
             <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-            <a class="py-2 d-none d-md-inline-block" onclick="cerrar()" href="login.html">Cerrar sesión</a>
-        <script type="text/javascript">
-          function cerrar(){
-              localStorage.clear();
-              sessionStorage.clear();
-              location.href="login.html";
-           }
-        </script>
+        <div class="btn-group">
+            <button id="showEmail" class="py-2 d-none d-md-inline-block dropdown-toggle" type="button" data-toggle="dropdown" style="width: 180px; background-color: #343a40; color: white; border-style: hidden;">
+                  <script>
+                    let htmlContentToAppend = "";
+                    if (localStorage.getItem('usuario') != null) {
+                      htmlContentToAppend += `
+                    <span> ` + localStorage.getItem("usuario") + ` </span>
+                    `
+                    }else{
+                      htmlContentToAppend += `
+                    <span> ` + sessionStorage.getItem("usuario") + ` </span>
+                    `
+                    }
+                    document.getElementById("showEmail").innerHTML = htmlContentToAppend;
+                  </script>
+            </button>
+            <ul class="dropdown-menu">
+              <button id="cerrarSesion" class="py-2 d-none d-md-inline-block" style="width: 178px; background-color: white; color: #343a40; border-style: hidden;" onclick="cerrar()">Cerrar sesión</button>
+            </ul>
+        </div>
         </div>
     </nav>
+            <script type="text/javascript">
+              function cerrar(){
+                  localStorage.clear();
+                  sessionStorage.clear();
+                  location.href="login.html";
+               }
+            </script>
+        
       <div class="container">
         <div class="text-center p-4">
           <h2>Vender</h2>
@@ -157,7 +177,7 @@
                   </li>
                   <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                      <h6 class="my-0">P0rcentaje</h6>
+                      <h6 class="my-0">Porcentaje</h6>
                       <small class="text-muted">Según el tipo de publicación</small>
                     </div>
                     <span class="text-muted" id="comissionText">-</span>

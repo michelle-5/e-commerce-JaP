@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
@@ -27,7 +25,12 @@
         font-size: 3.5rem;
       }
     }
+
+     #cerrarSesion:hover, #showEmail:hover {
+          text-decoration: underline;
+        }
   </style>
+
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
@@ -41,7 +44,29 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="py-2 d-none d-md-inline-block" onclick="cerrar()" href="login.html">Cerrar sesión</a>
+    <div class="btn-group">
+      <button id="showEmail" class="py-2 d-none d-md-inline-block dropdown-toggle" type="button" data-toggle="dropdown" style="width: 180px; background-color: #343a40; color: white; border-style: hidden;">
+        <script>
+          let htmlContentToAppend = "";
+          if (localStorage.getItem('usuario') != null) {
+            htmlContentToAppend += `
+          <span> ` + localStorage.getItem("usuario") + ` </span>
+          `
+          }else{
+            htmlContentToAppend += `
+          <span> ` + sessionStorage.getItem("usuario") + ` </span>
+          `
+          }
+          document.getElementById("showEmail").innerHTML = htmlContentToAppend;
+        </script>
+      </button>
+
+      <ul class="dropdown-menu">
+        <button id="cerrarSesion" class="py-2 d-none d-md-inline-block" style="width: 178px; background-color: white; color: #343a40; border-style: hidden;" onclick="cerrar()">Cerrar sesión</button>
+      </ul>
+    </div>
+    </div>
+  </nav>
         <script type="text/javascript">
           function cerrar(){
               localStorage.clear();
@@ -49,8 +74,6 @@
               location.href="login.html";
            }
         </script>
-    </div>
-  </nav>
   <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
@@ -73,5 +96,4 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
 </body>
-
 </html>

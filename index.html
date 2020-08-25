@@ -9,11 +9,14 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    
     <script src="js/init.js"></script>
+    <style>
+      #cerrarSesion:hover, #showEmail:hover {
+          text-decoration: underline;
+        }
+    </style>
   </head>
   <body>
     <nav class="site-header sticky-top py-1 bg-dark">
@@ -23,7 +26,31 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block" onclick="cerrar()" href="login.html">Cerrar sesión</a>
+
+      <div class="btn-group">
+        <button id="showEmail" class="py-2 d-none d-md-inline-block dropdown-toggle" type="button" data-toggle="dropdown" style="width: 180px; background-color: #343a40; color: white; border-style: hidden;">
+          <script>
+            let htmlContentToAppend = "";
+            if (localStorage.getItem('usuario') != null) {
+              htmlContentToAppend += `
+            <span> ` + localStorage.getItem("usuario") + ` </span>
+            `
+            }else{
+              htmlContentToAppend += `
+            <span> ` + sessionStorage.getItem("usuario") + ` </span>
+            `
+            }
+            document.getElementById("showEmail").innerHTML = htmlContentToAppend;
+          </script>
+        </button>
+
+        <ul class="dropdown-menu">
+          <button id="cerrarSesion" class="py-2 d-none d-md-inline-block" style="width: 178px; background-color: white; color: #343a40; border-style: hidden;" onclick="cerrar()">Cerrar sesión</button>
+        </ul>
+      </div>
+      </div>
+    </nav>
+
         <script type="text/javascript">
           function cerrar(){
               localStorage.clear();
@@ -31,8 +58,7 @@
               location.href="login.html";
            }
         </script>
-      </div>
-    </nav>
+      
     <main role="main">
       <section class="jumbotron text-center">
         <div class="m-5">
