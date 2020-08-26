@@ -49,32 +49,32 @@ function showProductsList(){
     let htmlContentToAppend = "";
 
     for(let i = 0; i < currentProductsArray.length; i++){
-        let category = currentProductsArray[i];
-        let nombreProd = category.name.toLowerCase();        
-        let desProd = category.description.toLowerCase();   
+        let product = currentProductsArray[i];
+        let prodName = product.name.toLowerCase();        
+        let prodDesc = product.description.toLowerCase();   
 
         if (
-            ((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount)) &&
-            ( (desProd.indexOf(texto)) !== -1 || (nombreProd.indexOf(texto)) !== -1) 
+            ((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount)) &&
+            ((prodDesc.indexOf(texto)) !== -1 || (prodName.indexOf(texto)) !== -1) 
             ){
 
             htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
-                        <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
+                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ category.name +`</h4>
-                            <small class="text-muted">` + category.currency + ": " + category.cost + ` </small>
+                            <h4 class="mb-1">`+ product.name +`</h4>
+                            <small class="text-muted">` + product.currency + ": " + product.cost + ` </small>
                         </div>
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1"></h4>
-                            <small class="text-muted">` + category.soldCount + ` artículos vendidos</small>
+                            <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
                         </div>
-                        <p class="mb-1">` + category.description + `</p>
+                        <p class="mb-1">` + product.description + `</p>
                     </div>
                 </div>
             </a>
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         sortAndShowProducts(ORDER_ASC_BY_NAME);
 
-        document.getElementById("barraBusqueda").value = "";
+        document.getElementById("searchBar").value = "";
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
 
@@ -155,8 +155,8 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 
 const filtrar= ()=>{
-    texto = barraBusqueda.value.toLowerCase();
+    texto = searchBar.value.toLowerCase();
     showProductsList();
 }
-barraBusqueda.addEventListener('keyup', filtrar)
+searchBar.addEventListener('keyup', filtrar)
 filtrar();
