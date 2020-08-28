@@ -106,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
 
         sortAndShowProducts(ORDER_ASC_BY_NAME);
-
         document.getElementById("searchBar").value = "";
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
