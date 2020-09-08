@@ -1,5 +1,6 @@
 var currentProductsArray = [];
 var currentCommentsArray = [];
+var relatedProductsArray = [];
 var product = {};
 
 function showImages(array) {
@@ -31,11 +32,11 @@ function showComments(array){
             <div class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
-                        ` + comment.user +`
+                    <i class="fas fa-user"></i>`+ " " + comment.user +`
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ comment.score +`</h4>
+                            <h5 class="mb-1"><span class="fa fa-star checked">`+ comment.score +`</h5>
                             <small class="text-muted">` + comment.dateTime + ` </small>
                         </div>
                         <p class="mb-1">` + comment.description + `</p>
@@ -45,6 +46,25 @@ function showComments(array){
             `
         document.getElementById("comments-container").innerHTML = htmlContentToAppend;
     }
+}
+
+function showRelatedProducts(array){
+
+    let htmlContentToAppend = "";
+        let relatedProduct = array[1];  
+        let relatedProduct2 = array[3]; 
+
+            htmlContentToAppend += `
+            <div style="display:flex;">
+            <div style="width: 250px; margin-right: 0.5rem">
+                ` + relatedProduct.name + `<br> <img class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct.imgSrc + `" alt=""></img>
+            </div>
+            <div style="width: 250px">
+                ` + relatedProduct2.name + `<br> <img class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct2.imgSrc + `" alt=""></img>
+            </div>
+            </div>
+            `
+        document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -70,6 +90,16 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             currentCommentsArray = resultObj.data;
             showComments(currentCommentsArray);
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function(e){
+    getJSONData(PRODUCTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            relatedProductsArray = resultObj.data;
+            showRelatedProducts(relatedProductsArray);
         }
     });
 });
