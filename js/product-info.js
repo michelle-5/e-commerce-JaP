@@ -26,7 +26,19 @@ function showComments(array){
     let htmlContentToAppend = "";
 
     for(let i = 0; i < array.length; i++){
-        let comment = array[i];   
+        let comment = array[i];
+        let stars = "";
+
+		for (let i=0; i<comment.score; i++){
+			stars += `
+				<span class="fa fa-star checked"></span>
+			`;
+		}
+		for (let i=comment.score; i<5; i++){
+			stars += `
+				<span class="fa fa-star"></span>
+			`;
+		}   
 
             htmlContentToAppend += `
             <div class="list-group-item list-group-item-action">
@@ -36,7 +48,7 @@ function showComments(array){
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><span class="fa fa-star checked">`+ comment.score +`</h5>
+                            <h5 class="mb-1">`+ stars +`</h5>
                             <small class="text-muted">` + comment.dateTime + ` </small>
                         </div>
                         <p class="mb-1">` + comment.description + `</p>
@@ -55,7 +67,7 @@ function showRelatedProducts(array){
         let relatedProduct2 = array[3]; 
 
             htmlContentToAppend += `
-            <div style="display:flex;">
+            <div style="display:flex; margin-bottom: 1rem;">
             <div style="width: 250px; margin-right: 0.5rem">
                 ` + relatedProduct.name + `<br> <img class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct.imgSrc + `" alt=""></img>
             </div>

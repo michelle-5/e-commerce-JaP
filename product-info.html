@@ -52,6 +52,14 @@
     </div>
   </nav>
 
+  <script type="text/javascript">
+    function cerrar(){
+        localStorage.clear();
+        sessionStorage.clear();
+        location.href="login.html";
+     }
+  </script>
+
   <main role="main">
     <div class="container mt-5">
       <div class="text-center p-4">
@@ -83,14 +91,19 @@
         <dt>Imágenes ilustrativas</dt>
       <div class="row text-center text-lg-left pt-2" id="productImages"></div>
         <dl>
-          <dt>Comentarios</dt>
-            <dd>
-              <div id="comments-container"></div>
-            </dd><br>
-            <dt>Productos relacionados</dt>
+          <dt>Productos relacionados</dt>
             <dd>
               <div id="relatedProducts"></div>
             </dd>
+          <dt>Comentarios</dt>
+            <dd>
+              <div id="comments-container"></div>
+            </dd>
+          <div style="margin-left: 1.4rem; margin-top: 1rem; width: 60%; margin-bottom: 1.5rem;">
+            <i style="position: relative; top: -4.4rem;" class="fas fa-user"></i>
+            <textarea id="userComment" style="resize: none; width: 95%; height: 5.5rem;" placeholder="Añadir comentario" required></textarea>
+            <br><button class="btn btn-primary btn-lg" onclick="" id="publicar" style="float: right; padding: 0.2rem; font-size: 1.1rem; margin-right: 1.3rem;">Publicar</button><span style="float: right; margin-right: 0.5rem; position: relative; top: 0.5rem;" class="fa fa-star"></span><span style="float: right; margin-right: 0.1rem; position: relative; top: 0.5rem;" class="fa fa-star"></span><span style="float: right; margin-right: 0.1rem; position: relative; top: 0.5rem;" class="fa fa-star"></span><span style="float: right; margin-right: 0.1rem; position: relative; top: 0.5rem;" class="fa fa-star"></span><span style="float: right; margin-right: 0.1rem; position: relative; top: 0.5rem;" class="fa fa-star"></span><br>
+          </div>
         </dl>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver listado de productos</a>
     </div>
