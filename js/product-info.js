@@ -2,6 +2,12 @@ var currentProductsArray = [];
 var currentCommentsArray = [];
 var relatedProductsArray = [];
 var product = {};
+let addComment = "";
+let valorStars = "";
+
+$("input[name='rate']" ).on('change', function () {
+    valorStars = $(this).val();
+});
 
 function showImages(array) {
 	let htmlContentToAppend = "";
@@ -44,7 +50,7 @@ function showComments(array){
             <div class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
-                    <i class="fas fa-user"></i>`+ " " + comment.user +`
+                    <i class="fas fa-user"></i><strong>`+ " " + comment.user +`</strong>
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
@@ -56,7 +62,7 @@ function showComments(array){
                 </div>
             </div>
             `
-        document.getElementById("comments-container").innerHTML = htmlContentToAppend;
+        document.getElementById("comments-Container").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -115,3 +121,59 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+var fecha = new Date(),
+segundos = fecha.getSeconds(),
+horas = fecha.getHours(),
+minutos = fecha.getMinutes(),
+día = fecha.getDate(),
+mes = fecha.getMonth() +1, /*Porque esta función empieza desde 0, y de otra forma devuelve el mes anterior*/
+year = fecha.getFullYear().toString();
+
+if (horas < 10){horas = '0' + horas;}
+if (mes < 10){mes = '0' + mes;}
+if (día < 10){día = '0' + día;}
+if (minutos < 10){ minutos = "0" + minutos; }
+if (segundos < 10){ segundos = "0" + segundos; }
+
+var userEmail = sessionStorage.getItem("usuario");
+var userName = userEmail.split('@')[0];
+var newComment = document.getElementById('userComment');
+
+
+let estrellas = "";
+for (let i = 0; i < 5; i++) {
+
+    if(i <= valorStars-1){
+        estrellas += ` 
+        <span class="fa fa-star checked"></span> 
+        `;
+    }else{
+        estrellas += ` 
+        <span class="fa fa-star"></span> 
+        `;
+    }
+}
+
+function publicar(){
+    
+        addComment += `
+            <div class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-user"></i> <strong>${userName}</strong>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">${estrellas}</h5>
+                        <small class="text-muted">${year+"-"+mes+"-"+día+" "+horas+":"+minutos+":"+segundos}</small>
+                    </div>
+                    <p class="mb-1">${newComment.value}</p>
+                </div>
+            </div>
+        </div>
+        `
+            document.getElementById("newComments").innerHTML = addComment;
+
+            
+}

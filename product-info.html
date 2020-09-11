@@ -58,11 +58,11 @@
             let htmlContentToAppend = "";
             if (localStorage.getItem('usuario') != null) {
               htmlContentToAppend += `
-            <span> ` + localStorage.getItem("usuario") + ` </span>
+            <span> ` + localStorage.getItem("usuario").split('@')[0]; + ` </span>
             `
             }else{
               htmlContentToAppend += `
-            <span> ` + sessionStorage.getItem("usuario") + ` </span>
+            <span> ` + sessionStorage.getItem("usuario").split('@')[0]; + ` </span>
             `
             }
             document.getElementById("showEmail").innerHTML = htmlContentToAppend;
@@ -120,13 +120,17 @@
             </dd>
           <dt>Comentarios</dt>
             <dd>
-              <div id="comments-container"></div>
+              <div id="comments-Container"></div>
+              <div id="newComments" class="media-body"></div>
             </dd>
-
           <div style="margin-left: 1.4rem; margin-top: 1rem; width: 60%; margin-bottom: 1.5rem;">
-            <i style="position: relative; top: -4.4rem;" class="fas fa-user"></i>
-            <textarea id="userComment" style="resize: none; width: 95%; height: 5.5rem;" placeholder="Añadir comentario" required></textarea>
-            <br><button class="btn btn-primary btn-lg" onclick="" id="publicar" style="float: right; padding: 0.2rem; font-size: 1.1rem; margin-right: 1.3rem;">Publicar</button><div class="stars-container">
+            <form onsubmit="return false">
+              <i style="position: relative; top: -4.4rem;" class="fas fa-user"></i>
+              <textarea id="userComment" style="resize: none; width: 95%; height: 5.5rem;" placeholder="Añadir comentario" required></textarea>
+              <br>
+              <button onclick="publicar()" class="btn btn-primary btn-lg" style="float: right; padding: 0.2rem; font-size: 1.1rem; margin-right: 1.3rem;">Publicar</button>
+            
+            <div class="stars-container">
               <div class="star-widget" style="margin-right: 0.5rem; position: relative; top: 0.5rem;">
                 <input type="radio" name="rate" id="rate-5" value="5" required>
                 <label for="rate-5" class="fas fa-star"></label>
@@ -140,6 +144,7 @@
                 <label for="rate-1" class="fas fa-star"></label>
               </div>
             </div><br>
+          </form>
           </div>
         </dl>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver listado de productos</a>

@@ -50,11 +50,11 @@
           let htmlContentToAppend = "";
           if (localStorage.getItem('usuario') != null) {
             htmlContentToAppend += `
-          <span> ` + localStorage.getItem("usuario") + ` </span>
+          <span> ` + localStorage.getItem("usuario").split('@')[0]; + ` </span>
           `
           }else{
             htmlContentToAppend += `
-          <span> ` + sessionStorage.getItem("usuario") + ` </span>
+          <span> ` + sessionStorage.getItem("usuario").split('@')[0]; + ` </span>
           `
           }
           document.getElementById("showEmail").innerHTML = htmlContentToAppend;
