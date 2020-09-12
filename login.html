@@ -29,7 +29,6 @@
       align-items: center;
       padding-top: 40px;
       padding-bottom: 40px;
-      margin-left: 10rem;
       background: linear-gradient(90deg, rgba(236, 237, 238, 1) 37.5%,  rgba(250, 250, 250, 1) 60%, rgba(247, 248, 248, 1) 64.5%);
     }
 
@@ -85,14 +84,15 @@
 </head>
 
 <body class="text-center">
-  <div>
-    <img src="img/login.png" alt="Login image">
-    <form class="text-center" id="form">
-      <br> 
-      <input type="email" name="email" id="email" style="width: 35%; height: 2rem; font-size: 0.9rem;" placeholder="Ingresa tu email" required><br>
-        <div style="display: flex; width: 35%; margin: 0 auto; margin-top: 0.5rem;"><input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" style="height: 2rem; font-size: 0.9rem; width: 330px" required><input type="checkbox" id="check" style=" height: 2rem; width: 35px; margin-left: 0.1rem"></div><br>
-      <button class="btn-pink" type="submit" style="width: 35%; height: 2.6rem;">Ingresar</button><br>
-      <button class="btn btn-secondary" type="submit" style="width: 35%; height: 2.2rem; padding: 0; margin-top: 0.5rem;">Regístrate</button>
+  <div style="margin: auto; width: 100%;">
+    <img src="img/login.png" alt="Login image" style="width: 24%">
+    <hr width="20%">
+    <form id="form">
+      <input type="email" name="email" id="email" style="margin-top: 0.5rem; border-color: rgb(202, 205, 208); padding: 0.6rem; border-radius: 0.2rem; width: 22%; height: 2.5rem; font-size: 0.95rem;" placeholder="Ingresa tu email" required><br>
+      <div class="input-group mb-3" style="margin-left: 33.3rem; display: flex; margin-top: 0.6rem;"><input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" style="width: 260px; border-color: rgb(202, 205, 208); padding: 0.6rem; border-radius: 0.2rem; height: 2.5rem; font-size: 0.95rem;" required><div class="input-group-append"><div class="input-group-text" style="width: 40px;"><input type="checkbox" id="check"></div></div></div>
+      
+      <button class="btn-pink" type="submit" style="width: 22%; height: 2.7rem; margin-top: 0.9rem;">Ingresar</button><br>
+      <button class="btn btn-secondary" type="submit" style="width: 22%; height: 2.3rem; padding: 0; margin-top: 0.5rem;">Registrarme</button>
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
       <div class="data">
         <img id="pic" class="img-circle" width="50" height="50">
