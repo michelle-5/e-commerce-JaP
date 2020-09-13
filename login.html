@@ -32,13 +32,6 @@
       background: linear-gradient(90deg, rgba(236, 237, 238, 1) 37.5%,  rgba(250, 250, 250, 1) 60%, rgba(247, 248, 248, 1) 64.5%);
     }
 
-    .signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: auto;
-    }
-
     img {
       width: 35%;
     }
@@ -65,10 +58,6 @@
       border-color: rgb(190, 19, 93);
     }
 
-    input {
-      border: 1px solid rgb(156, 153, 153);
-    }
-
     input:focus {
       outline-color: rgb(116, 114, 114);
     }
@@ -88,9 +77,16 @@
     <img src="img/login.png" alt="Login image" style="width: 24%">
     <hr width="20%">
     <form id="form">
-      <input type="email" name="email" id="email" style="margin-top: 0.5rem; border-color: rgb(202, 205, 208); padding: 0.6rem; border-radius: 0.2rem; width: 22%; height: 2.5rem; font-size: 0.95rem;" placeholder="Ingresa tu email" required><br>
-      <div class="input-group mb-3" style="margin-left: 33.3rem; display: flex; margin-top: 0.6rem;"><input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" style="width: 260px; border-color: rgb(202, 205, 208); padding: 0.6rem; border-radius: 0.2rem; height: 2.5rem; font-size: 0.95rem;" required><div class="input-group-append"><div class="input-group-text" style="width: 40px;"><input type="checkbox" id="check"></div></div></div>
-      
+      <div class="input-group mb-3">
+        <div style="width: 22%; margin: auto;">
+        <input type="email" id="email" class="form-control" placeholder="Ingresa tu email" required>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div style="width: 22%; margin: auto;">
+          <input type="password" id="password" class="form-control" placeholder="Ingresa tu contraseña" required>
+        </div>
+      </div>
       <button class="btn-pink" type="submit" style="width: 22%; height: 2.7rem; margin-top: 0.9rem;">Ingresar</button><br>
       <button class="btn btn-secondary" type="submit" style="width: 22%; height: 2.3rem; padding: 0; margin-top: 0.5rem;">Registrarme</button>
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
