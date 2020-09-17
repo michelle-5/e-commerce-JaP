@@ -4,27 +4,85 @@ var relatedProductsArray = [];
 var product = {};
 let addComment = "";
 let valorStars = "";
+var carouselClicked = 0;
 
 $("input[name='rate']" ).on('change', function () {
     valorStars = $(this).val();
 });
 
 function showImages(array) {
-	let htmlContentToAppend = "";
+    let htmlContentToAppend = "";
+    let imageHTML = `
+    <div class="carousel-item active">
+    <img id="active-carousel-img" class="d-block w-100" onclick=zoomIn(\"prod-info-carousel\") src="`+ array[0] +`" alt="Slide `+ 1 +`">
+    </div>
+    `;
+    let indicatorsHTML = `
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    `;
+    
+    for (let i = 1; i < array.length; i++) {
+        let imageSrc = array[i];
 
-	for (let i = 0; i < array.length; i++) {
-		let imageSrc = array[i];
+        imageHTML += `
+            <div class="carousel-item" onclick=zoomIn(\"prod-info-carousel\")>
+            <img class="d-block w-100" src="`+ imageSrc +`" alt="Slide `+ i +`">
+            </div>
+        `;
+
+        indicatorsHTML += `
+            <li data-target="#carouselExampleIndicators" data-slide-to="`+ i +`"></li>
+        `;
+    }
 
 		htmlContentToAppend +=
-        `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
-        </div> `;
+			`
+        <div id="prod-info-carousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">`
+            + indicatorsHTML +
+        `</ol>
+        <div class="carousel-inner">`
+            + imageHTML +
+        `</div>
+        <a class="carousel-control-prev" href="#prod-info-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#prod-info-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        </div>
+        `;
 
 		document.getElementById("productImages").innerHTML = htmlContentToAppend;
-	}
+	
+}
+
+function zoomIn(elementID){
+    let element = document.getElementById(elementID);
+    if (carouselClicked === 0){
+        element.style += `
+            -ms-transform: scale(1.3) translateX(30%);; /* IE 9 */
+            -webkit-transform: scale(1.3) translateX(30%);; /* Safari 3-8 */
+            transform: scale(1.3) translateX("30%");
+            transition: transform 0.5s;
+            cursor: -moz-zoom-out; 
+            cursor: -webkit-zoom-out; 
+            cursor: zoom-out;
+        `
+        carouselClicked = 1;
+    }
+    else{
+        element.style = `
+            transition: transform 0.5s;
+            cursor: -moz-zoom-in; 
+            cursor: -webkit-zoom-in; 
+            cursor: zoom-in;
+        `
+        carouselClicked = 0;
+    }
+
 }
 
 function showComments(array){
