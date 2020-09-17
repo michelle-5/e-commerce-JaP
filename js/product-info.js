@@ -134,11 +134,11 @@ function showRelatedProducts(array){
             htmlContentToAppend += `
             <div style="display:flex; margin-bottom: 1.3rem; margin-top: 0.5rem;">
             <a style="text-decoration:none; color: black" href="product-info.html"><div class="zoom" style="width: 250px; border-color: lightgray; border-style: solid; border-width: 1px; padding: 1rem; padding-bottom: 1.5rem;">
-                <img style="border: 0" class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct.imgSrc + `" alt=""></img> ` + relatedProduct.name + `<hr> <p> `+ relatedProduct.description +` </p>
+                <img style="border: 0" class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct.imgSrc + `" alt=""></img> <strong>` + relatedProduct.name + `</strong> <hr> <p> `+ relatedProduct.description +` </p>
             </div></a> 
             <div style="padding:0.5rem"></div>
             <a style="text-decoration:none; color: black" href="product-info.html"><div class="zoom" style="width: 250px; border-style: solid; border-width: 1px; padding: 1rem; padding-bottom:0rem; border-color: lightgray;">
-                <img style="border: 0" class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct2.imgSrc + `" alt=""></img> ` + relatedProduct2.name + `<hr> <p> `+ relatedProduct2.description +` </p>
+                <img style="border: 0" class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct2.imgSrc + `" alt=""></img> <strong>` + relatedProduct2.name + `</strong> <hr> <p> `+ relatedProduct2.description +` </p>
             </div></a>
             </div>
             `
