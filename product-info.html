@@ -41,6 +41,11 @@
          color: orange;
        }
 
+       .zoom:hover{
+        transform: scale(1.05);
+        transition: transform .4s;
+       }
+
  </style>
 </head>
 
@@ -82,6 +87,7 @@
         sessionStorage.clear();
         location.href="login.html";
      }
+
   </script>
 
   <main role="main">
@@ -102,22 +108,14 @@
           <div style="width: 50%; margin-left: 1rem;">
             <dl>
               <dt>Costo</dt>
-                <dd>
-                  <p id="productCost"></p>
-                </dd>
+                  <p id="productCost" style="margin-bottom: 0.5rem;"></p>
                 <dt>Categoría</dt>
-                <dd>
-                  <a href="category-info.html" id="productCategory"></a>
-                </dd>
-              
-              <dt>Cantidad de vendidos</dt>
-                <dd>
-                  <p id="productSoldCount"></p>
-                </dd>
-              <dt>Descripción</dt>
-                <dd>
-                  <p id="productDesc"></p>
-                </dd>
+                  <p style="margin-bottom: 0.5rem;"><a href="category-info.html" id="productCategory"></a></p>
+                <dt>Cantidad de vendidos</dt>
+                  <p id="productSoldCount" style="margin-bottom: 0.5rem;"></p>
+                <dt>Descripción</dt>
+                  <p id="productDesc" style="margin-bottom: 1rem; font-size: 0.97rem;"></p>
+                <button class="btn btn-primary">Añadir al carrito</button>
             </dl>
           </div>
         </div>

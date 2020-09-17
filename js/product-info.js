@@ -3,8 +3,9 @@ var currentCommentsArray = [];
 var relatedProductsArray = [];
 var product = {};
 let addComment = "";
-let valorStars = "";
+var valorStars = "";
 var carouselClicked = 0;
+
 
 $("input[name='rate']" ).on('change', function () {
     valorStars = $(this).val();
@@ -131,13 +132,14 @@ function showRelatedProducts(array){
         let relatedProduct2 = array[3]; 
 
             htmlContentToAppend += `
-            <div style="display:flex; margin-bottom: 1rem;">
-            <div style="width: 250px; margin-right: 0.5rem">
-                ` + relatedProduct.name + `<br> <img class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct.imgSrc + `" alt=""></img>
-            </div>
-            <div style="width: 250px">
-                ` + relatedProduct2.name + `<br> <img class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct2.imgSrc + `" alt=""></img>
-            </div>
+            <div style="display:flex; margin-bottom: 1.3rem; margin-top: 0.5rem;">
+            <a style="text-decoration:none; color: black" href="product-info.html"><div class="zoom" style="width: 250px; border-color: lightgray; border-style: solid; border-width: 1px; padding: 1rem; padding-bottom: 1.5rem;">
+                <img style="border: 0" class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct.imgSrc + `" alt=""></img> ` + relatedProduct.name + `<hr> <p> `+ relatedProduct.description +` </p>
+            </div></a> 
+            <div style="padding:0.5rem"></div>
+            <a style="text-decoration:none; color: black" href="product-info.html"><div class="zoom" style="width: 250px; border-style: solid; border-width: 1px; padding: 1rem; padding-bottom:0rem; border-color: lightgray;">
+                <img style="border: 0" class="img-fluid img-thumbnail" width="100%" src="` + relatedProduct2.imgSrc + `" alt=""></img> ` + relatedProduct2.name + `<hr> <p> `+ relatedProduct2.description +` </p>
+            </div></a>
             </div>
             `
         document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
@@ -198,8 +200,9 @@ var userEmail = sessionStorage.getItem("usuario");
 var userName = userEmail.split('@')[0];
 var newComment = document.getElementById('userComment');
 
+function publicar(){
 
-let estrellas = "";
+    let estrellas = "";
 for (let i = 0; i < 5; i++) {
 
     if(i <= valorStars-1){
@@ -212,8 +215,6 @@ for (let i = 0; i < 5; i++) {
         `;
     }
 }
-
-function publicar(){
     
         addComment += `
             <div class="list-group-item list-group-item-action">
