@@ -11,13 +11,25 @@ function showArticles(array){
             <td style="width:10%"><img width="80%" src="` + article.src + `"></td>
             <td>`+ article.name +`</td>
             <td>` + article.currency + " " + article.unitCost + `</td>
-            <td>` + article.count + `</td>
+            <td style="width:20%"><input style="width: 36%; border: 1px solid lightgray; border-radius:0.2rem;" type="number" value="` + article.count + `"></td>
             <td style="width:8%">` + article.count*article.unitCost + `</td>
           </tr>
         `
-        document.getElementById("articles-container").innerHTML = htmlContentToAppend;
+        document.getElementById("articles-container").innerHTML = htmlContentToAppend;        
+        
+            document.getElementsByTagName("input")[1].addEventListener("change", function(){
+                document.getElementsByTagName("td")[9].textContent = $(this).val()*article.unitCost;
+            });
+            
+            document.getElementsByTagName("input")[0].addEventListener("change", function(){
+                document.getElementsByTagName("td")[4].textContent = $(this).val()*array.articles[0].unitCost;
+            });    
+        
+        
+        
     }
 }
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
