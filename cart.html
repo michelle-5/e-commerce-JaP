@@ -96,20 +96,7 @@
   <br>
     <form>
   <h5 class="mb-3">Tipo de envío</h5>
-              <div class="d-block my-3">
-                <div class="custom-control custom-radio">
-                  <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
-                  <label class="custom-control-label" for="goldradio">Premium: 2 a 5 días (15%)</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                  <label class="custom-control-label" for="premiumradio">Express: 5 a 8 días (7%)</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                  <label class="custom-control-label" for="standardradio">Estándar: 12 a 15 días (5%)</label>
-                </div>
-              </div>
+              <div id="envío"></div>
               <hr class="mb-4">
               <div>
                 <h5>Dirección de envío</h5>
@@ -141,7 +128,7 @@
                       <h6 class="my-0">Costo de envío</h6>
                       <small class="text-muted">Según el tipo de envío</small>
                     </div>
-                    <span class="text-muted" id="comissionText">-</span>
+                    <span class="text-muted" id="comissionText"></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between">
                     <span>Total ($)</span>
