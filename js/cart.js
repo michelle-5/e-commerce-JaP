@@ -8,25 +8,23 @@ function showArticles(array){
 
         htmlContentToAppend += `
           <tr>
-            <td style="width:10%"><img width="80%" src="` + article.src + `"></td>
-            <td>`+ article.name +`</td>
-            <td>` + article.currency + " " + article.unitCost + `</td>
-            <td style="width:20%"><input style="width: 36%; border: 1px solid lightgray; border-radius:0.2rem;" type="number" value="` + article.count + `"></td>
-            <td style="width:8%">` + article.count*article.unitCost + `</td>
+            <td style="width: 10%"><img width="80%" src="` + article.src + `"></td>
+            <td style="width: 22%;">`+ article.name +`</td>
+            <td style="width: 15%;">`+ article.currency +`</td>
+            <td style="width: 15%;">`+ article.unitCost + `</td>
+            <td style="width: 15%"><input style="width: 43%; border: 1px solid lightgray; border-radius:0.2rem;" type="number" value="` + article.count + `"></td>
+            <td style="width: 1%">`+ article.count*article.unitCost +`</td>
           </tr>
         `
         document.getElementById("articles-container").innerHTML = htmlContentToAppend;        
         
             document.getElementsByTagName("input")[1].addEventListener("change", function(){
-                document.getElementsByTagName("td")[9].textContent = $(this).val()*article.unitCost;
+                document.getElementsByTagName("td")[11].textContent = +($(this).val()*article.unitCost);
             });
             
             document.getElementsByTagName("input")[0].addEventListener("change", function(){
-                document.getElementsByTagName("td")[4].textContent = $(this).val()*array.articles[0].unitCost;
-            });    
-        
-        
-        
+                document.getElementsByTagName("td")[5].textContent = + $(this).val()*array.articles[0].unitCost;
+            });            
     }
 }
 
