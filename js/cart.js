@@ -20,7 +20,7 @@ function showArticles(array){
         
             document.getElementsByTagName("input")[1].addEventListener("change", function(){
                 document.getElementsByTagName("td")[11].textContent = ($(this).val()*article.unitCost);
-                document.getElementById("productCostText").innerHTML = "UYU " + (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40));
+                document.getElementById("productCostText").innerHTML = (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40));
 
                 if (document.getElementById("goldradio").checked === true){
                     document.getElementById("comissionText").innerHTML = Math.round((parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40)) * 0.15);
@@ -43,7 +43,7 @@ function showArticles(array){
             
             document.getElementsByTagName("input")[0].addEventListener("change", function(){
                 document.getElementsByTagName("td")[5].textContent = $(this).val()*array.articles[0].unitCost;
-                document.getElementById("productCostText").innerHTML = "UYU " + (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40));
+                document.getElementById("productCostText").innerHTML = (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40));
 
                 if (document.getElementById("goldradio").checked === true){
                     document.getElementById("comissionText").innerHTML = Math.round((parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40)) * 0.15);
@@ -64,7 +64,7 @@ function showArticles(array){
 
             });     
     }
-            document.getElementById("productCostText").innerHTML = "UYU " + (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40));
+            document.getElementById("productCostText").innerHTML = (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40));
         
 let envío = `<div class="d-block my-3">
 <div class="custom-control custom-radio">
