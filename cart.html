@@ -20,6 +20,12 @@
       user-select: none;
     }
 
+    .number::-webkit-outer-spin-button,
+    .number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
@@ -37,6 +43,57 @@
 </head>
 
 <body>
+
+<!-- Modal -->
+<div class="modal fade" id="seleccionarModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Selecciona el medio de pago</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" onsubmit="return false">
+        <input type="radio" name="method" checked id="tarjeta">
+        <label for="method" style="font-size: 1.1rem;">Tarjeta de crédito/débito:</label>
+        <div>
+          <label style="margin-left: 2rem;" for="cardnumber">N° de tarjeta</label>
+          <input type="number" class="number" name="cardnumber" style="margin-right: 0.5rem; border: 1px solid lightgray; width: 10rem; height: 1.8rem; border-radius: 0.2rem;" required>
+          <label for="cvv">CVV</label>
+          <input type="number" class="number" name="cvv" style="border: 1px solid lightgray; width: 4rem; height: 1.8rem; border-radius: 0.2rem;" required><br>
+          <div style="margin-top: 0.5rem;">
+            <label style="margin-left: 2rem; margin-right: 1.09rem;" for="name">Expiración</label>
+            <input type="date" id="date" name="date" style="border: 1px solid lightgray; width: 10rem; height: 1.8rem; border-radius: 0.2rem;" required>
+          </div>
+        </div>
+        <div style="margin-left: 2rem;">
+          <input type="radio" name="card" checked>
+          <img src="https://belybula.com/wp-content/uploads/2019/04/Visa-Logo-Free-Download-PNG.png" alt="Visa" width="13%">
+          <input type="radio" name="card">
+          <img src="https://elcapitalfinanciero.com/wp-content/uploads/2016/07/FINAL-LOGO-123.jpg" alt="MasterCard" width="18%">
+          <input type="radio" name="card">
+          <img src="https://www.greedyrates.ca/wp-content/uploads/2018/04/American_Express_logo-394x222-394x222-c-default.jpg" alt="American Express" width="14%">
+        </div>
+        <input type="radio" name="method" id="banco">
+        <label for="method" style="font-size: 1.1rem;">Transferencia bancaria:</label><br>
+        <div style="margin-top: 0.5rem; margin-left: 2rem;">
+          <label for="cuenta" style="margin-right: 0.5rem;">N° de cuenta</label>
+          <input type="number" class="number" name="cuenta" style="border: 1px solid lightgray; width: 11rem; height: 1.8rem; border-radius: 0.2rem;" required><br>
+          <label for="code">Código SWIFT</label>
+          <input type="number" class="number" name="code" style="border: 1px solid lightgray; height: 1.8rem; width: 11rem; border-radius: 0.2rem;" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" onclick="cerrar()" class="btn btn-primary">Aceptar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
@@ -94,24 +151,25 @@
   </table>   
   <hr>
   <br>
-    <form>
-  <h5 class="mb-3">Tipo de envío</h5>
+  <form action="" onsubmit="return false">
+    <h5 class="mb-3">Tipo de envío</h5>
               <div id="envío"></div>
               <hr class="mb-4">
               <div>
                 <h5>Dirección de envío</h5>
                 <div style="display: flex;">
                   <div>
+                    <input type="text" style="display: none;">
                     <label style="font-size: 0.9rem;" for="calle">Calle</label><br>
-                    <input style="border: 1px solid lightgray; height: 1.8rem; width: 20rem; border-radius: 0.2rem;" type="text" name="calle">
+                    <input style="border: 1px solid lightgray; height: 1.8rem; width: 20rem; border-radius: 0.2rem;" type="text" name="calle" required>
                   </div>
                   <div style="margin-left: 2rem;">
                    <label style="font-size: 0.9rem;" for="num">Número</label><br>
-                   <input style="border: 1px solid lightgray; height: 1.8rem; border-radius: 0.2rem;" type="number" name="num">
+                   <input style="border: 1px solid lightgray; height: 1.8rem; border-radius: 0.2rem;" type="number" name="num" required>
                   </div>
                 </div><br>
                 <label style="font-size: 0.9rem;" for="esq">Esquina</label><br>
-                <input style="border: 1px solid lightgray; height: 1.8rem; width: 20rem; border-radius: 0.2rem;" type="text" name="esq" id="">
+                <input style="border: 1px solid lightgray; height: 1.8rem; width: 20rem; border-radius: 0.2rem;" type="text" name="esq" required>
               </div>
               <hr class="mb-4">
               <h5 class="mb-3">Costos</h5>
@@ -137,10 +195,12 @@
                 </ul>
               <hr class="mb-4">
               <h5>Forma de pago</h5>
-              <h6>No ha seleccionado. <a href="">Seleccionar</a></h6> <br>
-              <button class="btn btn-primary btn-lg" type="submit">Finalizar compra</button>
+              <h6>No ha seleccionado.
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-link" style="padding: 0;" data-toggle="modal" data-target="#seleccionarModal">Seleccionar.</button>
+              </h6><br>
+              <button class="btn btn-primary btn-lg" id="finalizar" onsubmit="check()" type="submit">Finalizar compra</button>
             </form>
-          </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

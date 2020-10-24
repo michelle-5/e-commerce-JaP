@@ -12,36 +12,42 @@ function showArticles(array){
             <td style="width: 22%;">`+ article.name +`</td>
             <td style="width: 15%;">`+ article.currency +`</td>
             <td style="width: 15%;">`+ article.unitCost + `</td>
-            <td style="width: 15%"><input min="1" style="width: 43%; border: 1px solid lightgray; border-radius:0.2rem;" type="number" value="` + article.count + `"></td>
+            <td style="width: 15%"><input style="width: 43%; border: 1px solid lightgray; border-radius:0.2rem;" type="number" value="` + article.count + `"></td>
             <td style="width: 1%">`+ article.count*article.unitCost +`</td>
-          </tr>
-        `
-        document.getElementById("articles-container").innerHTML = htmlContentToAppend;        
+          </tr>`
+        document.getElementById("articles-container").innerHTML = htmlContentToAppend;
         
-            document.getElementsByTagName("input")[1].addEventListener("change", function(){
+            document.getElementsByTagName("input")[11].addEventListener("change", function(){
                 document.getElementsByTagName("td")[11].textContent = ($(this).val()*article.unitCost);
                 document.getElementById("productCostText").innerHTML = (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40));
 
                 if (document.getElementById("goldradio").checked === true){
                     document.getElementById("comissionText").innerHTML = Math.round((parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40)) * 0.15);
                     document.getElementById("totalCostText").innerHTML = parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40) + parseInt(document.getElementById("comissionText").textContent);
-    
                 }
+
                 if (document.getElementById("premiumradio").checked === true){
                     document.getElementById("comissionText").innerHTML = Math.round((parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40)) * 0.07);
                     document.getElementById("totalCostText").innerHTML = (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40)) + parseInt(document.getElementById("comissionText").textContent);
-    
                 }
             
                 if (document.getElementById("standardradio").checked === true){
                     document.getElementById("comissionText").innerHTML = Math.round((parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40)) * 0.05);
                     document.getElementById("totalCostText").innerHTML = (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40)) + parseInt(document.getElementById("comissionText").textContent);
+                }
 
+                if(document.getElementsByTagName("input")[11].value < 1){
+                    document.getElementsByTagName("td")[6].style.display = "none";
+                    document.getElementsByTagName("td")[7].style.display = "none";
+                    document.getElementsByTagName("td")[8].style.display = "none";
+                    document.getElementsByTagName("td")[9].style.display = "none";
+                    document.getElementsByTagName("td")[10].style.display = "none";
+                    document.getElementsByTagName("td")[11].style.display = "none";
                 }
 
             });
             
-            document.getElementsByTagName("input")[0].addEventListener("change", function(){
+            document.getElementsByTagName("input")[10].addEventListener("change", function(){
                 document.getElementsByTagName("td")[5].textContent = $(this).val()*array.articles[0].unitCost;
                 document.getElementById("productCostText").innerHTML = (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40));
 
@@ -60,6 +66,15 @@ function showArticles(array){
                     document.getElementById("comissionText").innerHTML = Math.round((parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40)) * 0.05);
                     document.getElementById("totalCostText").innerHTML = (parseInt(document.getElementsByTagName("td")[5].textContent) + parseInt(document.getElementsByTagName("td")[11].textContent*40)) + parseInt(document.getElementById("comissionText").textContent);
     
+                }
+
+                if(document.getElementsByTagName("input")[10].value < 1){
+                    document.getElementsByTagName("td")[0].style.display = "none";
+                    document.getElementsByTagName("td")[1].style.display = "none";
+                    document.getElementsByTagName("td")[2].style.display = "none";
+                    document.getElementsByTagName("td")[3].style.display = "none";
+                    document.getElementsByTagName("td")[4].style.display = "none";
+                    document.getElementsByTagName("td")[5].style.display = "none";
                 }
 
             });     
@@ -106,12 +121,93 @@ if (document.getElementById("goldradio").checked === true){
 }
 }
 
+document.getElementsByName("method")[0].addEventListener("change", function(){
+    if (document.getElementById("tarjeta").checked){
+        document.getElementsByClassName("number")[2].disabled = true;
+        document.getElementsByClassName("number")[3].disabled = true;
+    }else{
+        document.getElementsByClassName("number")[2].disabled = false;
+        document.getElementsByClassName("number")[3].disabled = false;   
+    }
+    if (document.getElementById("banco").checked){
+        document.getElementsByClassName("number")[0].disabled = true;
+        document.getElementsByClassName("number")[1].disabled = true;
+        document.getElementsByName("date")[0].disabled = true;
+        document.getElementsByName("card")[0].disabled = true;
+        document.getElementsByName("card")[1].disabled = true;
+        document.getElementsByName("card")[2].disabled = true;
+    }else{
+        document.getElementsByClassName("number")[0].disabled = false;
+        document.getElementsByClassName("number")[1].disabled = false;
+        document.getElementsByName("date")[0].disabled = false;
+        document.getElementsByName("card")[0].disabled = false;
+        document.getElementsByName("card")[1].disabled = false;
+        document.getElementsByName("card")[2].disabled = false;
+    }
+});
+   
+document.getElementsByName("method")[1].addEventListener("change", function(){
+    if (document.getElementById("tarjeta").checked){
+        document.getElementsByClassName("number")[2].disabled = true;
+        document.getElementsByClassName("number")[3].disabled = true;
+    }else{
+        document.getElementsByClassName("number")[2].disabled = false;
+        document.getElementsByClassName("number")[3].disabled = false;
+    }
+    if (document.getElementById("banco").checked){
+        document.getElementsByClassName("number")[0].disabled = true;
+        document.getElementsByClassName("number")[1].disabled = true;
+        document.getElementsByName("date")[0].disabled = true;
+        document.getElementsByName("card")[0].disabled = true;
+        document.getElementsByName("card")[1].disabled = true;
+        document.getElementsByName("card")[2].disabled = true;
+    }else{
+        document.getElementsByClassName("number")[0].disabled = false;
+        document.getElementsByClassName("number")[1].disabled = false;
+        document.getElementsByName("date")[0].disabled = false;
+        document.getElementsByName("card")[0].disabled = false;
+        document.getElementsByName("card")[1].disabled = false;
+        document.getElementsByName("card")[2].disabled = false;
+    }
+});
+if (document.getElementById("tarjeta").checked){
+    document.getElementsByClassName("number")[2].disabled = true;
+    document.getElementsByClassName("number")[3].disabled = true;
+}
 
+function cerrar(){
+    if (document.getElementById("tarjeta").checked){
+        if((document.getElementsByClassName("number")[0].value.length != 0) && (document.getElementsByClassName("number")[1].value.length != 0) && (document.getElementById("date").value.length != 0)){
+            $('#seleccionarModal').modal('hide');
+        }
+    }
+    if (document.getElementById("banco").checked){
+        if(document.getElementsByClassName("number")[2].value.length != 0 && document.getElementsByClassName("number")[3].value.length != 0){
+            $('#seleccionarModal').modal('hide');
+        }
+    }
+}
+
+function check(){
+    if (document.getElementById("tarjeta").checked){
+        if((document.getElementsByClassName("number")[0].value.length == 0) || (document.getElementsByClassName("number")[1].value.length == 0) || (document.getElementById("date").value.length == 0)){
+            alert("1")
+        }
+    }
+
+    if (document.getElementById("banco").checked){
+        if(document.getElementsByClassName("number")[2].value.length == 0 || document.getElementsByClassName("number")[3].value.length == 0){
+            alert("2")
+        }
+    }
+
+    
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function(){
     getJSONData("https://japdevdep.github.io/ecommerce-api/cart/654.json").then(function(resultObj){
         if (resultObj.status === "ok")
         {
