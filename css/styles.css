@@ -139,3 +139,11 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.withzoom {
+	transition: transform 0.3s;
+}
+
+.withzoom:hover {
+	-webkit-transform: scale(1.05); 
+}

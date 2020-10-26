@@ -12,7 +12,7 @@ function showArticles(array){
             <td style="width: 22%;">`+ article.name +`</td>
             <td style="width: 15%;">`+ article.currency +`</td>
             <td style="width: 15%;">`+ article.unitCost + `</td>
-            <td style="width: 15%"><input min=0 style="width: 43%; border: 1px solid lightgray; border-radius:0.2rem;" type="number" value="` + article.count + `"></td>
+            <td style="width: 15%"><input min="0" style="width: 43%; border: 1px solid lightgray; border-radius:0.2rem;" type="number" value="` + article.count + `"></td>
             <td style="width: 1%">`+ article.count*article.unitCost + `</td>
         </tr>
         <button name="delete" class="btn" style="color: red"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
