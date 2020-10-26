@@ -55,7 +55,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="" onsubmit="return false">
+        <form action="login.html">
         <input type="radio" name="method" checked id="tarjeta">
         <label for="method" style="font-size: 1.1rem;">Tarjeta de crédito/débito:</label>
         <div>
@@ -72,7 +72,7 @@
           <input type="radio" name="card" checked>
           <img src="https://belybula.com/wp-content/uploads/2019/04/Visa-Logo-Free-Download-PNG.png" alt="Visa" width="13%">
           <input type="radio" name="card">
-          <img src="https://elcapitalfinanciero.com/wp-content/uploads/2016/07/FINAL-LOGO-123.jpg" alt="MasterCard" width="18%">
+          <img src="https://cdn.iconscout.com/icon/free/png-256/mastercard-credit-debit-card-bank-transaction-32303.png" alt="MasterCard" width="21%">
           <input type="radio" name="card">
           <img src="https://www.greedyrates.ca/wp-content/uploads/2018/04/American_Express_logo-394x222-394x222-c-default.jpg" alt="American Express" width="14%">
         </div>
@@ -86,8 +86,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" onclick="cerrar()" class="btn btn-primary">Aceptar</button>
+        <button type="submit" class="btn btn-primary">Finalizar compra</button>
       </div>
     </form>
     </div>
@@ -193,13 +192,8 @@
                     <strong id="totalCostText"></strong>
                   </li>
                 </ul>
-              <hr class="mb-4">
-              <h5>Forma de pago</h5>
-              <h6>No ha seleccionado.
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-link" style="padding: 0;" data-toggle="modal" data-target="#seleccionarModal">Seleccionar.</button>
-              </h6><br>
-              <button class="btn btn-primary btn-lg" id="finalizar" onsubmit="check()" type="submit">Finalizar compra</button>
+                <button class="btn btn-primary btn-lg" id="finalizar" type="submit" data-toggle="modal" data-target="#seleccionarModal">Continuar</button>
             </form>
   <div id="spinner-wrapper">
     <div class="lds-ring">
