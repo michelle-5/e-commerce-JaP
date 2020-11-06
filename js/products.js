@@ -60,24 +60,17 @@ function showProductsList(){
             ){
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product.name +`</h4>
-                            <small class="text-muted">` + product.currency + ": " + product.cost + ` </small>
-                        </div>
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1"></h4>
-                            <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
-                        </div>
-                        <p class="mb-1">` + product.description + `</p>
-                    </div>
-                </div>
-            </a>
+            <div class="col-sm-6 col-lg-3">
+                <a href="product-info.html" class="card mb-4 shadow-sm custom-card withzoom" style="padding: 0.5rem;">
+                        <img class="bd-placeholder-img card-img-top rounded-bottom" src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                            <h4 class="mb-1 pl-2" style="margin-top: 0.5rem">`+ product.name +`</h4>
+                            <small class="text-muted p1-2" style="margin-left: 1.3rem;">` + product.currency + ": " + product.cost + ` </small>
+                            <small class="text-muted" style="margin-left: 1.3rem;">` + product.soldCount + ` artículos vendidos</small>
+                            <div class="card-body">
+                                <p class="mb-1" style="font-size: 0.85rem;">` + product.description + `</p>
+                            </div>
+                </a>
+            </div>
             `
         }
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
