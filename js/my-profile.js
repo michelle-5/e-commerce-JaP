@@ -27,3 +27,23 @@ function isNumberKey(evt){
         return false;
     return true;
 }
+
+document.getElementById("upload").addEventListener("change", function(){
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+        localStorage.setItem("latest-profile-pic", reader.result);
+    });
+
+    reader.readAsDataURL(this.files[0]);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const latestProfilePic = localStorage.getItem("latest-profile-pic");
+    if(latestProfilePic){
+        document.getElementById("profilePic").setAttribute("src", latestProfilePic);
+    }else{
+        document.getElementById("profilePic").setAttribute("src", "https://www.lococrossfit.com/wp-content/uploads/2019/02/user-icon.png");
+    }
+
+});
