@@ -22,7 +22,7 @@ function showArticles(array){
 
         document.getElementById("articles-container").innerHTML = htmlContentToAppend;
 
-       zz document.getElementsByName("delete")[i].addEventListener("click", function(){
+        document.getElementsByName("delete")[i].addEventListener("click", function(){
             document.getElementsByTagName("td")[6].style.display = "none";
             document.getElementsByTagName("td")[7].style.display = "none";
             document.getElementsByTagName("td")[8].style.display = "none";
