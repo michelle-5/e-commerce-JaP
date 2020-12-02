@@ -60,7 +60,7 @@
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <div class="btn-group">
         <button id="showEmail" class="py-2 d-none d-md-inline-block dropdown-toggle" type="button" data-toggle="dropdown" style="width: 180px; background-color: #343a40; color: white; border-style: hidden;">
-          <script>
+          <script type="text/javascript">
             let htmlContentToAppend = "";
             if (localStorage.getItem('usuario') != null) {
               htmlContentToAppend += `
@@ -82,22 +82,18 @@
       </div>
     </div>
   </nav>
-  <script type="text/javascript">
-    function cerrar(){
-        localStorage.clear();
-        sessionStorage.clear();
-        location.href="login.html";
-     }
-  </script>
+  
   <div class="container p-5">
     <h3 style="text-align: center;">Mi perfil</h3>
+    <img src="" width="12%" alt="Preview" id="profilePic" style="margin: auto; display: block;">
     <h5>Editar información:</h5><br>
-    <form onsubmit="return false">
+    <form action="my-profile.html">
       <input type="text" class="input" id="nombres" placeholder="Nombres" required>
       <input type="text" class="input" id="apellidos" placeholder="Apellidos" required><br><br>
-      <input type="email" class="input" id="correo" placeholder="Email" required>
-      <input type="text" class="input" id="telefono" onkeypress="return isNumberKey(event)" minlength="9" placeholder="Teléfono" required><br><br>
+      <input type="email" class="input" id="correo" placeholder="Email" required disabled>
+      <input type="text" class="input" id="telefono" onkeypress="return isNumberKey(event)" minlength="9" maxlength="15" placeholder="Teléfono" required><br><br>
       <input type="number" class="input" id="edad" min="1" max="100" placeholder="Edad" required><br><br><br>
+      <input type="file" id="upload"><br><br><br>
       <button class="btn btn-primary" type="submit" id="guardarCambios">Guardar cambios</button><br><br><br>
     </form>
   <div class="alert fade alert-success" role="alert" id="alertResult">

@@ -28,7 +28,7 @@
 
       <div class="btn-group">
         <button id="showEmail" class="py-2 d-none d-md-inline-block dropdown-toggle" type="button" data-toggle="dropdown" style="width: 180px; background-color: #343a40; color: white; border-style: hidden;">
-          <script>
+          <script type="text/javascript">
             let htmlContentToAppend = "";
             if (localStorage.getItem('usuario') != null) {
               htmlContentToAppend += `
@@ -51,14 +51,6 @@
       </div>
       </div>
     </nav>
-
-        <script type="text/javascript">
-          function cerrar(){
-              localStorage.clear();
-              sessionStorage.clear();
-              location.href="login.html";
-           }
-        </script>
       
     <main role="main">
       <section class="jumbotron text-center">
