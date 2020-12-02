@@ -49,7 +49,7 @@
      reader.addEventListener("load", () => {
          document.getElementById("profilePic").src = reader.result;
      });
- 
+
      reader.readAsDataURL(this.files[0]);
  });
  
